@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Filibusterismo: The Work of the Head</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles for a scholarly, dark theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark background */
+            color: #c9d1d9; /* Light text */
+            scroll-behavior: smooth;
+        }
+        /* Ensures the fixed header doesn't hide the top of the section when navigating */
+        .section-anchor:before {
+            content: "";
+            display: block;
+            height: 80px; /* Offset for fixed header */
+            margin-top: -80px;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .text-accent {
+            color: #b33939; /* Deep red accent color */
+        }
+        .bg-card {
+            background-color: #161b22; /* Slightly lighter dark background for cards */
+        }
+        .nav-link:hover {
+            color: #f0f6fc;
+            border-bottom: 2px solid #b33939;
+        }
+        /* Custom Timeline Styling */
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #b33939;
+            border: 2px solid #0d1117;
+            box-shadow: 0 0 0 3px #161b22;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 0.45rem;
+            top: 1.25rem;
+            bottom: 0;
+            width: 3px;
+            background-color: #374151;
+        }
+        /* Style for the active tab */
+        .tab-active {
+            background-color: #b33939;
+            color: white;
+            border-color: #b33939;
+        }
+        /* Image styling for responsiveness and aesthetics */
+        .doc-image {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            object-fit: cover;
+            aspect-ratio: 16/9; /* Use a common aspect ratio for consistency */
+            margin-top: 1rem;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0d1117',
+                        'secondary-dark': '#161b22',
+                        'accent-red': '#b33939',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- Fixed Navigation Bar (Responsive: collapses to a button on mobile) -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 bg-secondary-dark/95 backdrop-blur-sm shadow-xl z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Title -->
+                <a href="#home" class="flex-shrink-0 font-bold text-xl text-accent-red">
+                    El Fili: The Work of the Head
+                </a>
+                
+                <!-- Desktop Links -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-4 lg:space-x-8">
+                    <a href="#home" class="nav-link px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">Home</a>
+                    <a href="#ghent" class="nav-link px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">Ghent & Finance</a>
+                    <a href="#simoun" class="nav-link px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">Simoun Profile</a>
+                    <a href="#climax" class="nav-link px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">Climax</a>
+                    <a href="#archive" class="nav-link px-3 py-2 text-sm font-medium transition duration-150 ease-in-out">Archive</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" type="button" class="sm:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="sm:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium bg-gray-900 text-white">Home</a>
+                <a href="#ghent" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Ghent & Finance</a>
+                <a href="#simoun" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Simoun Profile</a>
+                <a href="#climax" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Climax</a>
+                <a href="#archive" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Archive</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- HOME: The Novel's Power and Comparison -->
+        <section id="home" class="section-anchor pt-16 pb-16 md:pt-24 bg-primary-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4 leading-tight">
+                    <span class="text-accent-red">El Filibusterismo:</span> The Work of the Head
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                    José Rizal's second and final novel—a political awakening, a tale of tragedy, and a desperate call for reform.
+                </p>
+
+                <!-- Dedication -->
+                <div class="bg-card p-6 rounded-xl shadow-2xl mb-12 border border-accent-red/20">
+                    <h2 class="text-3xl font-semibold mb-4 text-accent-red">A Dedication in Blood</h2>
+                    <p class="text-lg text-gray-300">
+                        The novel was fiercely dedicated to the memory of the martyred priests, the Gom-Bur-Za (Fathers Mariano Gomez, Jose Burgos, and Jacinto Zamora), who were executed by the Spanish colonial authorities in 1872. This dedication firmly established the novel's revolutionary political stance.
+                    </p>
+                    <div class="mt-6">
+                        <img src="gbz.jpg">
+                         <!--  -->
+                    </div>
+                </div>
+
+                <!-- Noli vs. Fili Comparison -->
+                <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-3 text-green-400">Noli Me Tangere (The Noli)</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i data-lucide="heart" class="w-5 h-5 mr-2 text-green-400"></i> A romantic novel.</li>
+                            <li class="flex items-center"><i data-lucide="book" class="w-5 h-5 mr-2 text-green-400"></i> A work of the heart, a book of feeling.</li>
+                            <li class="flex items-center"><i data-lucide="sun" class="w-5 h-5 mr-2 text-green-400"></i> Contains more idealism and romance.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-bold mb-3 text-accent-red">El Filibusterismo (The Fili)</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><i data-lucide="gavel" class="w-5 h-5 mr-2 text-accent-red"></i> A political novel.</li>
+                            <li class="flex items-center"><i data-lucide="brain" class="w-5 h-5 mr-2 text-accent-red"></i> A work of the head, a book of thought.</li>
+                            <li class="flex items-center"><i data-lucide="flame" class="w-5 h-5 mr-2 text-accent-red"></i> More revolutionary, tragic, and filled with bitterness, hatred, pain, violence, and sorrow.</li>
+                        </ul>
+                    </div>
+                    <!-- Image illustrating the contrast, placed outside the individual cards but within the section grid -->
+                    <div class="md:col-span-2 mt-4">
+                        <img src="book.jpg">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CHAPTER 1: The Sacrifice in Ghent & Timeline -->
+        <section id="ghent" class="section-anchor pt-16 pb-16 bg-secondary-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-accent-red mb-10 text-center">The Sacrifice in Ghent & The Financial Struggle</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    
+                    <!-- Text and Context -->
+                    <div>
+                        <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700 mb-6">
+                            <i data-lucide="compass" class="w-8 h-8 text-accent-red mb-3"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Why Ghent?</h3>
+                            <p class="text-gray-400 mb-4">Rizal moved from Brussels to Ghent, Belgium for two main, interconnected reasons:</p>
+                            <ul class="list-disc list-inside text-gray-300 space-y-1 ml-4">
+                                <li>The cost of printing was significantly cheaper than in Brussels.</li>
+                                <li>To escape from the enticing attraction of Petite Suzanne, allowing him to focus on the arduous task of finishing the novel.</li>
+                            </ul>
+                            <!-- Image of Ghent for visual context -->
+                            <img src="ghent.jpg">
+                        </div>
+                        <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                            <i data-lucide="wallet-2" class="w-8 h-8 text-accent-red mb-3"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Savior of the Fili: Valentine Ventura</h3>
+                            <p class="text-gray-300">
+                                During the printing process, Rizal faced acute financial distress, forcing him to pawn his jewels just to cover the initial payments. The printing almost halted entirely.
+                            </p>
+                            <p class="text-green-400 mt-3 font-medium">
+                                Valentine Ventura in Paris learned of Rizal's predicament and immediately sent him the necessary funds. With this crucial financial aid, the printing of El Filibusterismo was successfully resumed and completed.
+                            </p>
+                            <img src="ventura.png">
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Timeline of Publishing Struggle (Visual element) -->
+                    <div class="bg-card p-8 rounded-xl shadow-2xl border border-accent-red/20">
+                        <h3 class="text-2xl font-bold mb-6 text-white text-center">The Fili Publishing Timeline</h3>
+                        <div class="relative">
+                            <!-- Vertical Line -->
+                            <div class="timeline-line"></div>
+                            
+                            <!-- Timeline Item 1 -->
+                            <div class="timeline-item mb-8">
+                                <h4 class="text-lg font-semibold text-white">Start of Printing in Ghent</h4>
+                                <p class="text-sm text-gray-400">Rizal arrives in Ghent, selects the cheapest printing press, and uses his remaining funds to begin the work.</p>
+                            </div>
+
+                            <!-- Timeline Item 2 -->
+                            <div class="timeline-item mb-8">
+                                <h4 class="text-lg font-semibold text-white">Financial Crisis</h4>
+                                <p class="text-sm text-gray-400">Funds run out. Rizal is forced to pawn his remaining jewels to make partial payments, but the printer threatens to stop the job.</p>
+                                <span class="bg-red-900 text-red-100 text-xs font-semibold px-2 py-0.5 rounded-full inline-block mt-1">Jewels Pawned</span>
+                            </div>
+
+                            <!-- Timeline Item 3 -->
+                            <div class="timeline-item mb-8">
+                                <h4 class="text-lg font-semibold text-green-400">Intervention of Ventura</h4>
+                                <p class="text-sm text-gray-400">Valentine Ventura sends vital funds from Paris, saving the novel from oblivion and allowing printing to continue.</p>
+                            </div>
+                            
+                            <!-- Timeline Item 4 (Final Event) -->
+                            <div class="timeline-item">
+                                <h4 class="text-lg font-semibold text-white">The Fili Comes Off the Press</h4>
+                                <p class="text-sm text-gray-400">The finished copies are printed and dedicated to the Gom-Bur-Za. Rizal sends immediate copies to Ventura.</p>
+                                <span class="bg-accent-red text-white text-xs font-semibold px-2 py-0.5 rounded-full inline-block mt-1">Success</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2: Simoun: The Black Eminence & Character Profile -->
+        <section id="simoun" class="section-anchor pt-16 pb-16 bg-primary-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-accent-red mb-10 text-center">Simoun: The Complex Profile</h2>
+                
+                <div class="grid lg:grid-cols-3 gap-8 items-start">
+                    
+                    <!-- Fixed Character Image/Role (Responsive Sticky Header) -->
+                    <div class="lg:col-span-1 bg-card p-8 rounded-xl shadow-xl border border-gray-700 text-center lg:sticky lg:top-20">
+                        <i data-lucide="crown" class="w-12 h-12 text-accent-red mx-auto mb-4"></i>
+                        <h3 class="text-3xl font-bold text-white">Simoun / Crisostomo Ibarra</h3>
+                        <p class="text-lg text-gray-400 mb-2">The Avenger | The Jeweler</p>
+                        <hr class="border-gray-700 my-4">
+                        <p class="text-xl font-semibold text-red-300">The Black Eminence</p>
+                        <p class="text-sm text-gray-500 mt-1">
+                            A powerful figure, friend, and advisor of the Governor-General, pulling strings from behind the scenes in Malacañang.
+                        </p>
+                        <div class="mt-6">
+                            <img src="ibarra.jpg">
+                        </div>
+                    </div>
+
+                    <!-- Obsessions and Plot Card (Tabbed Interface) -->
+                    <div class="lg:col-span-2 bg-card p-8 rounded-xl shadow-xl border border-gray-700">
+                        <h3 class="text-3xl font-bold mb-4 text-white">Two Magnificent Obsessions</h3>
+                        
+                        <!-- Tab Buttons (Responsive) -->
+                        <div class="flex flex-col sm:flex-row border-b border-gray-700 mb-6" role="tablist">
+                            <!-- Added cursor-pointer class and text-gray-300 for non-active state -->
+                            <button id="tab-rescue" class="simoun-tab p-3 text-lg font-medium rounded-t-lg transition duration-300 sm:mr-2 border border-transparent tab-active w-full sm:w-auto text-center cursor-pointer" onclick="showSimounTab('rescue')" role="tab" aria-selected="true" aria-controls="content-rescue">
+                                <i data-lucide="user-plus" class="w-5 h-5 inline mr-2"></i>Obsession 1: Rescue
+                            </button>
+                            <!-- Added cursor-pointer class and text-gray-300/hover classes -->
+                            <button id="tab-revolution" class="simoun-tab p-3 text-lg font-medium rounded-t-lg transition duration-300 border border-transparent w-full sm:w-auto text-center cursor-pointer text-gray-300 hover:text-white hover:bg-gray-800/50" onclick="showSimounTab('revolution')" role="tab" aria-selected="false" aria-controls="content-revolution">
+                                <i data-lucide="zap" class="w-5 h-5 inline mr-2"></i>Obsession 2: Revolution
+                            </button>
+                        </div>
+
+                        <!-- Tab Content 1: Rescue -->
+                        <div id="content-rescue" class="simoun-content space-y-4" role="tabpanel">
+                            <h4 class="text-2xl font-semibold text-accent-red">The Personal Revenge: Maria Clara</h4>
+                            <p class="text-gray-300">
+                                Simoun's plot is fundamentally driven by his past. His most immediate goal is to rescue Maria Clara from the oppression and solitude of the nunnery of Santa Clara, the love interest he left behind in the Noli.
+                            </p>
+                            <p class="text-gray-400">
+                                This personal motive underscores the tragedy of the novel, as the grand revolutionary plan is intertwined with, and ultimately derailed by, his singular, desperate love. His first attempt at an armed uprising failed upon hearing the news of her death.
+                            </p>
+                        </div>
+
+                        <!-- Tab Content 2: Revolution -->
+                        <div id="content-revolution" class="simoun-content space-y-4 hidden" role="tabpanel">
+                            <h4 class="text-2xl font-semibold text-accent-red">The Political Agenda: Fomenting War</h4>
+                            <p class="text-gray-300">
+                                Simoun's political goal is not reform, but destruction. He believes the only path to true liberation is a violent revolt against the Spanish masters.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-400 mt-4 space-y-2 ml-4">
+                                <li>He used his influence to encourage corruption in the government.</li>
+                                <li>He promoted the oppression of the masses and hastened the moral degradation of the country.</li>
+                                <li>The goal: Make the people so desperate that they would rise up in arms—a deliberate use of evil for what he perceives as a greater good.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CHAPTER 3: The Climax and Confession (Image added for the lamp) -->
+        <section id="climax" class="section-anchor pt-16 pb-16 bg-secondary-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-accent-red mb-10 text-center">The Climax and Confession</h2>
+                
+                <div class="space-y-12 max-w-4xl mx-auto">
+                    
+                    <!-- The Wedding Bomb -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-3 text-white flex items-center"><i data-lucide="bomb" class="w-6 h-6 mr-3 text-red-500"></i>The Perfected Plan: The Nitroglycerine Lamp</h3>
+                        <p class="text-gray-300">
+                            Simoun's final, devastating plan was to use a beautiful lamp as a wedding gift for Paulita Gomez and Juanito Pelaez. Only he and his associate, the medical student Basilio, knew the lamp was rigged with nitroglycerine.
+                        </p>
+                        <p class="text-gray-400 mt-2">
+                            When the wick burned low, the explosion would destroy the house, killing the Governor-General, friars, government officials, and all the guests, triggering a simultaneous revolt across Manila.
+                        </p>
+                        <img src="lamp.png">
+                    </div>
+
+                    <!-- Isagani's Rescue -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-3 text-white flex items-center"><i data-lucide="bolt" class="w-6 h-6 mr-3 text-yellow-500"></i>Isagani's Intervention</h3>
+                        <p class="text-gray-300">
+                            Basilio, watching the scene, warned his friend Isagani (who had been rejected by Paulita) to flee. Realizing Paulita was in grave danger, Isagani, despite his heartbreak, rushed into the house.
+                        </p>
+                        <p class="text-gray-400 mt-2">
+                            In a heroic act, he seized the lighted lamp and hurled it into the river, where the nitroglycerine exploded, saving the lives of the unsuspecting crowd.
+                        </p>
+                    </div>
+                    
+                    <!-- Simoun's Confession -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-3 text-white flex items-center"><i data-lucide="cross" class="w-6 h-6 mr-3 text-blue-400"></i>The Final Confession</h3>
+                        <p class="text-gray-300">
+                            Simoun eluded the soldiers pursuing him and found refuge in the home of Padre Florentino. To escape capture, Simoun took poison.
+                        </p>
+                        <p class="text-gray-400 mt-2">
+                            As he lay dying, he confessed his true identity, his wealth, and his sinister plan for vengeance to the priest. Padre Florentino then cast Simoun's jewels into the sea, stating that true liberation could not be achieved through violence.
+                        </p>
+                        <img src=" pade.jpg">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ARCHIVE: Unfinished Works and Other Characters (Image added for fragments) -->
+        <section id="archive" class="section-anchor pt-16 pb-16 md:pt-24 bg-primary-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-accent-red mb-10 text-center">Other Works and Characters</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Other Fili Character -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Cabesang Tales</h3>
+                        <p class="text-gray-300">
+                            A character whose story mirrors the oppression faced by Rizal's own family. Cabesang Tales was dispossessed of his land by the friars.
+                        </p>
+                        <p class="text-gray-400 mt-2">
+                            In desperation, he resorts to violence and becomes the bandit chieftain named Matanglawin.
+                        </p>
+                    </div>
+
+                    <!-- Unfinished Third Novel -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">The Unfinished Third Novel</h3>
+                        <p class="text-gray-300">
+                            Rizal planned a third novel where politics would not find much space.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-400 mt-4 space-y-1 ml-4">
+                            <li>Principal Role: Ethics, focused on Filipino habits and customs.</li>
+                            <li>Tone: Humorous, satirical, and witty.</li>
+                            <li>Language: Intended to be written in Tagalog for Tagalog readers.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Other Fragments -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Other Fragments</h3>
+                        <p class="text-gray-300">
+                            Rizal left several other unfinished works and fragments, demonstrating his prolific mind even under duress.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-400 mt-4 space-y-1 ml-4">
+                            <li>Sultan Zaide</li>
+                            <li>Kamandangan</li>
+                            <li>"Makamisa" and "Dapitan"</li>
+                        </ul>
+                        <img src="un.png">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-secondary-dark text-center p-6 border-t border-gray-700">
+        <p class="text-sm text-gray-500">&copy; 2025 El Filibusterismo Documentary. Based on historical and literary analysis.</p>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu, Lucide Icons, and Simoun Tabs -->
+    <script>
+        // --- 1. Initialize Lucide Icons ---
+        lucide.createIcons();
+
+        // --- 2. Mobile Menu Toggle Logic ---
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+            
+            this.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icon from menu to 'x'
+            const icon = this.querySelector('svg');
+            icon.setAttribute('data-lucide', isExpanded ? 'menu' : 'x');
+            lucide.createIcons(); // Re-render the icon
+        });
+
+        // Hide mobile menu after clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+                document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false');
+                
+                // Reset menu icon
+                const icon = document.getElementById('mobile-menu-btn').querySelector('svg');
+                icon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+        
+        // --- 3. Simoun Tab Logic ---
+        function showSimounTab(tabName) {
+            // Define classes for active and inactive states
+            const activeClasses = ['tab-active', 'text-white'];
+            const inactiveClasses = ['text-gray-300', 'hover:text-white', 'hover:bg-gray-800/50'];
+
+            // Remove active state from all buttons and apply inactive styling
+            document.querySelectorAll('.simoun-tab').forEach(button => {
+                button.classList.remove(...activeClasses);
+                button.classList.add(...inactiveClasses);
+                button.setAttribute('aria-selected', 'false');
+            });
+            
+            // Hide all content
+            document.querySelectorAll('.simoun-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Get the clicked button and its content
+            const activeTab = document.getElementById(`tab-${tabName}`);
+            const activeContent = document.getElementById(`content-${tabName}`);
+
+            // Set active state for clicked button and remove inactive styling
+            activeTab.classList.add(...activeClasses);
+            activeTab.classList.remove(...inactiveClasses);
+            activeTab.setAttribute('aria-selected', 'true');
+            
+            // Show corresponding content
+            activeContent.classList.remove('hidden');
+        }
+
+        // Initialize the icons on load (the initial tab state is already set in the HTML)
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
